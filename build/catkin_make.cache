@@ -1,0 +1,2 @@
+beginner_tutorials:ddynamic_reconfigure:realsense-ros/realsense2_camera:realsense-ros/realsense2_description
+-DCATKIN_DEVEL_PREFIX=/home/brady/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/home/brady/catkin_ws/install -G Unix Makefiles

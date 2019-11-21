@@ -1,0 +1,27 @@
+Log:
+
+1) RealSense SDK2.0 installed both Debian Package & Linux Installion
+   - Seem to have created two sets of rules, may need to delete to reduce redundancy
+   - Hardware timestamp is not working, could be an issue, probably not.
+   - Make sure frameware is up to date and such
+
+2) ROS Melodic Installed
+
+3) Intel RealSense ROS installed from sources.
+   - Seems to be working...not entirely sure how to verify however.
+   - Seems all dependent packages are installed properly, again, no idea how to verify
+   - Check .travis.yml file--may provide some hints.
+
+4) ROS Wrapper installed
+   - Starts and recognizes camera fine, get errors concerning timestamp
+   - Rviz seems to be running as well, but I'm receiving no pointcloud data. Metaframe error of sorts. Gotta fix this.
+
+To Dos:
+
+1) Fix ROS Wrapper, get RViz to display images, probably debug the metaframe error. Later,  determine how to actually *save* pointcloud data
+
+2) Other options for creating meshes. May be able to avoid ROS altogether. Save as a nuclear option.
+
+3) Get SLAM up and running. Find out exactly what needs to be done with it.
+
+4) Continue to develop a better understanding of what, exactly, ROS does & how.
