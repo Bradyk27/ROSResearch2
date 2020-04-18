@@ -10,7 +10,7 @@ TIME=2;
 for f in {0..4} :
  do
   SIZE=$((10**f));
-  ssh ${USER}@${HOST} "cd ${REMOTE_PATH}; truncate -s ${SIZE}M test_file.ply";
+  ssh ${USER}@${HOST} "cd ${REMOTE_PATH}; truncate -s ${SIZE}M test_file.txt";
   for i in {1..5}
   do
   # Get the most recent file and assign it to `RECENT`.
@@ -18,15 +18,15 @@ for f in {0..4} :
 
   # Run the actual SCP command.
   START_TIME=`gdate +%s.%N`;
-  scp ${USER}@${HOST}:${REMOTE_PATH}${RECENT} pointcloud.ply;
+  scp ${USER}@${HOST}:${REMOTE_PATH}${RECENT} pointcloud.txt;
   END_TIME=`gdate +%s.%N`;
   RUN_TIME=$( echo "$END_TIME - $START_TIME" | bc -l );
   printf 'Runtime: %s\n' "${RUN_TIME} seconds";
-  FILE_SIZE=$(stat -f%z pointcloud.ply);
+  FILE_SIZE=$(stat -f%z pointcloud.txt);
   printf 'File size: %s\n' "${FILE_SIZE} bytes";
   BYTES_PER_SEC=$(echo "$FILE_SIZE / $RUN_TIME" | bc -l);
   printf 'Bytes / second: %s\n\n' "${BYTES_PER_SEC} b/s";
-  echo -e "${FILE_SIZE},${BYTES_PER_SEC}" >> transfer_data_ply.csv
+  echo -e "${FILE_SIZE},${BYTES_PER_SEC}" >> transfer_data_txt.csv
   sleep $TIME;
   # Calculate runtime and such
   done
