@@ -13,3 +13,25 @@
 [submodule "ros-sharp"]
 	   path = ros-sharp
 	   url = https://github.com/siemens/ros-sharp
+
+[submodule "kobuki_msgs"]
+           path = src/kobuki_msgs
+           url = https://github.com/yujinrobot/kobuki
+
+[submodule "turtlebot"]
+           path = src/turtlebot
+           url = https://github.com/turtlebot/turtlebot
+
+[submodule "turtlebot_apps"]
+           path = src/turtlebot_apps
+           url = https://github.com/turtlebot/turtlebot_apps
+
+[submodule "turtlebot_msgs"]
+           path = src/turtlebot_msgs
+           url = https://github.com/turtlebot/turtlebot_msgs
+
+[submodule "turtlebot_simulator"]
+           path = src/turtlebot_simulator
+           url = https://github.com/turtlebot/turtlebot_simulator
+
+
