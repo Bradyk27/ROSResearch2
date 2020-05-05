@@ -4,7 +4,7 @@
 USER='brady';
 HOST='10.42.0.1';
 LOCAL_PATH='~/Desktop/';
-REMOTE_PATH='~/catkin_ws';
+REMOTE_PATH='~/catkin_ws/';
 TIME=.01;
 
 while :

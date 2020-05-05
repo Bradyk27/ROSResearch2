@@ -9,3 +9,7 @@
 [submodule "pcl"]
 	   path = pcl
 	   url = https://github.com/PointCloudLibrary/pcl
+
+[submodule "ros-sharp"]
+	   path = ros-sharp
+	   url = https://github.com/siemens/ros-sharp

@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{9B457495-5CED-73C0-FE49-43F184F7E9CF}</ProjectGuid>
+    <ProjectGuid>{FD93A1F8-0054-8BE0-0E1F-82CDC05138F9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Pcx.Editor</AssemblyName>
@@ -303,19 +303,19 @@
       <HintPath>/Applications/Visual Studio.app/Contents/Resources/lib/monodevelop/AddIns/MonoDevelop.Unity/Editor/SyntaxTree.VisualStudio.Unity.Bridge.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Advertisements">
-      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/Pointcloud Rendering/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Library/PackageCache/com.unity.ads@2.0.8/Editor/UnityEditor.Advertisements.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/Pointcloud Rendering/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/Pointcloud Rendering/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/Pointcloud Rendering/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.Purchasing">
-      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/Pointcloud Rendering/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>/Applications/Unity/Hub/Editor/2018.3.14f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
@@ -674,7 +674,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Pcx.csproj">
-      <Project>{40F6BA01-D4C3-0EA0-9CF9-26A2452BE9F8}</Project>
+      <Project>{449A52D7-88C5-2D6E-E6B8-25194B42A217}</Project>
       <Name>Pcx</Name>
     </ProjectReference>
   </ItemGroup>

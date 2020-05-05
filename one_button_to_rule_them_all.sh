@@ -10,7 +10,7 @@ TIME=.01;
 while :
 do
   # Get the most recent file and assign it to `RECENT`.
-  RECENT=$(ssh ${USER}@${HOST} ls -lrt ${REMOTE_PATH} | awk '/.*/ { f=$NF }; END { print f }');
+  RECENT=$(ssh ${USER}@${HOST} ls -lrt ${REMOTE_PATH} | awk '/.pcd/ { f=$NF }; END { print f }');
 
   # Run the actual SCP command.
   scp ${USER}@${HOST}:${REMOTE_PATH}${RECENT} pointcloud.pcd;

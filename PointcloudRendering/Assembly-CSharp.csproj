@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{35FF042B-E00F-6CA5-C540-3CC26394B804}</ProjectGuid>
+    <ProjectGuid>{E719AB3B-9B45-2ADE-873B-37C8C0494301}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -65,19 +65,19 @@
     <None Include="Assets\PointCloud\Shaders\VertexColor.shader" />
     <None Include="Assets\PointCloud\Readme.txt" />
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/Pointcloud Rendering/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.PackageManagerUI.Editor">
-      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/Pointcloud Rendering/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/Pointcloud Rendering/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/Pointcloud Rendering/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.DataPrivacy">
-      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/Pointcloud Rendering/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Library/ScriptAssemblies/Unity.Analytics.DataPrivacy.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>/Applications/Unity/Hub/Editor/2018.3.14f1/Unity.app/Contents/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -284,13 +284,13 @@
       <HintPath>/Applications/Unity/Hub/Editor/2018.3.14f1/Unity.app/Contents/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Tracker">
-      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/Pointcloud Rendering/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Tracker.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.Editor">
-      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/Pointcloud Rendering/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
-      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/Pointcloud Rendering/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Library/PackageCache/com.unity.analytics@3.2.2/Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>/Applications/Unity/Hub/Editor/2018.3.14f1/Unity.app/Contents/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -640,11 +640,11 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Pcx.Editor.csproj">
-      <Project>{9B457495-5CED-73C0-FE49-43F184F7E9CF}</Project>
+      <Project>{FD93A1F8-0054-8BE0-0E1F-82CDC05138F9}</Project>
       <Name>Pcx.Editor</Name>
     </ProjectReference>
     <ProjectReference Include="Pcx.csproj">
-      <Project>{40F6BA01-D4C3-0EA0-9CF9-26A2452BE9F8}</Project>
+      <Project>{449A52D7-88C5-2D6E-E6B8-25194B42A217}</Project>
       <Name>Pcx</Name>
     </ProjectReference>
   </ItemGroup>
