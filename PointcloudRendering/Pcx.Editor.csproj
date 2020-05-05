@@ -317,6 +317,48 @@
     <Reference Include="UnityEditor.Purchasing">
       <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Library/PackageCache/com.unity.purchasing@2.0.3/Editor/UnityEditor.Purchasing.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Assets/RosSharp/Plugins/External/Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json">
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Assets/RosSharp/Plugins/Microsoft/System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions">
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Assets/RosSharp/Plugins/Microsoft/System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces">
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Assets/RosSharp/Plugins/Microsoft/Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Buffers">
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Assets/RosSharp/Plugins/Microsoft/System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="websocket-sharp">
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Assets/RosSharp/Plugins/External/websocket-sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory">
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Assets/RosSharp/Plugins/Microsoft/System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Channels">
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Assets/RosSharp/Plugins/Microsoft/System.Threading.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web">
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Assets/RosSharp/Plugins/Microsoft/System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="MessageGeneration">
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Assets/RosSharp/Plugins/MessageGeneration.dll</HintPath>
+    </Reference>
+    <Reference Include="RosBridgeClient">
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Assets/RosSharp/Plugins/RosBridgeClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json.Bson">
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Assets/RosSharp/Plugins/External/Newtonsoft.Json.Bson.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Assets/RosSharp/Plugins/Microsoft/System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="Urdf">
+      <HintPath>/Users/admin/Desktop/Research/Dr. Bethel/ROSResearch2/PointcloudRendering/Assets/RosSharp/Plugins/Urdf.dll</HintPath>
+    </Reference>
     <Reference Include="mscorlib">
       <HintPath>/Applications/Unity/Hub/Editor/2018.3.14f1/Unity.app/Contents/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll</HintPath>
     </Reference>
