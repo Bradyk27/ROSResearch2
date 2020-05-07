@@ -38,9 +38,9 @@ namespace RosSharp.RosBridgeClient
                 ProcessMessage();
         }
 
-        protected override void ReceiveMessage(MessageTypes.Sensor.CompressedImage compressedImage)
+        protected override void ReceiveMessage(MessageTypes.Sensor.CompressedImage Image)
         {
-            imageData = compressedImage.data;
+            imageData = Image.data;
             isMessageReceived = true;
         }
 
