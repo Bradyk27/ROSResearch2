@@ -1,0 +1,19 @@
+[submodule "src/ddynamic_reconfigure"]
+	   path = src/ddynamic_reconfigure
+	   url = https://github.com/pal-robotics/ddynamic_reconfigure
+
+[submodule "src/realsense-ros"]
+	   path = src/realsense-ros
+	   url = https://github.com/IntelRealSense/realsense-ros
+
+[submodule "pcl"]
+	   path = pcl
+	   url = https://github.com/PointCloudLibrary/pcl
+
+[submodule "ros-sharp"]
+	   path = ros-sharp
+	   url = https://github.com/siemens/ros-sharp
+
+[submodule "ros-sharp"]
+           path = ros-sharp
+           url = https://github.com/siemens/ros-sharp
