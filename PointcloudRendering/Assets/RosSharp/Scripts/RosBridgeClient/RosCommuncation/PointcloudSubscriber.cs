@@ -138,7 +138,7 @@ public class PointCloudSubscriber : MonoBehaviour
     }
 
     public void OnDrawGizmos()
-    {
+    {s
         Gizmos.color = new Color(1, 0.2F, 0, 0.5F);
         if(vertices == null)
             return;
