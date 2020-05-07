@@ -121,6 +121,8 @@
     <Compile Include="Assets\RosSharp\Scripts\Urdf\UrdfComponents\UrdfRobot.cs" />
     <Compile Include="Assets\RosSharp\Scripts\Urdf\UrdfComponents\UrdfVisual.cs" />
     <Compile Include="Assets\RosSharp\Scripts\Urdf\UrdfComponents\UrdfVisuals.cs" />
+    <Compile Include="Assets\RosSharpMessages\Realsense2Camera\msg\Extrinsics.cs" />
+    <Compile Include="Assets\RosSharpMessages\Realsense2Camera\msg\IMUInfo.cs" />
     <None Include="Assets\RosSharp\Plugins\External\websocket-sharp.xml" />
     <None Include="Assets\PointCloud\Shaders\VertexColor.shader" />
     <None Include="Assets\RosSharp\Plugins\External\Newtonsoft.Json.Bson.xml" />
