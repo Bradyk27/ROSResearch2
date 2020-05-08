@@ -57,7 +57,7 @@ public class SamplePointcloudSubscriber : MonoBehaviour
         rosSocket = new RosSocket(new  RosSharp.RosBridgeClient.Protocols.WebSocketNetProtocol(uri)); // 10.189.42.225:9090
         //Subscribe("/cloud");
         //Subscribe("/zed/rtabmap/cloud_map");
-        Subscribe("/camera/infra1/image_rect_raw/compressed");
+        Subscribe("/rtabmap/cloud_map");
     }
 
     void Update()

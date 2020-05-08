@@ -9,17 +9,11 @@
 
 //Adapted from https://answers.ros.org/question/339483/ros-sharp-unity3d-import-pointcloud2/ & https://github.com/siemens/ros-sharp/blob/master/Libraries/RosBridgeClient/PointCloud.cs
 // To Dos:
-// Publish correclty orientated mesh
-    //Review some guides & other subscribers to figure out how to best do this
-    //How does Unity actually DO this? Like...what object do I apply this script to?
-    //Fine tune mesh renderer, need to replicate something close to a pointcloud
-    //Reference Odometry & LaserScan guides
-    //How does this all fit with rosconnector and subscriptions and such?
+//Voxel cloud messages not processing (or crashing system), rtabmap messages are being received though.
+    //The question is how to render them and what form are they in? Are we getting the full message?
+// Publish correctly orientated mesh
 //Can any of the other assets I've imported be used here?
-//SamplePointCloud not updating
-//PointcloudSubscriber seems unable to load new messages either...interesting...
-    //Need correct mesh? Why is it defaulting to planes?
-    //Try different streams?
+//SamplePointCloud? May or may not be updating?
 
 using UnityEngine;
 using System;
@@ -68,7 +62,6 @@ namespace RosSharp.RosBridgeClient
                 Points[i] = new RgbPoint3(byteSlice, message.fields);
             }
             vertices = new Vector3[I];
-            Debug.Log(vertices);
 
             for (var i = 0; i < I; i++)
             {
@@ -76,6 +69,7 @@ namespace RosSharp.RosBridgeClient
                 vertices[i].y = Points[i].z;
                 vertices[i].z = Points[i].y;
             }
+            Debug.Log("Vertices: " + vertices); //Need to make sure these are actual legitmate vertices. Then we can figure out how to render them
             isMessageReceived = true;
         }
     
