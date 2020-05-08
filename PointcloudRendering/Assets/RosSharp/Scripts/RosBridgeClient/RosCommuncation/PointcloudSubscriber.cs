@@ -7,209 +7,85 @@
 |______/  |__|\__\ | _| `._____| \______/  |_______/    |_______|
                                                                 */
 
+//Adapted from https://answers.ros.org/question/339483/ros-sharp-unity3d-import-pointcloud2/ & https://github.com/siemens/ros-sharp/blob/master/Libraries/RosBridgeClient/PointCloud.cs
+// To Dos:
+// Publish correclty orientated mesh
+    //Review some guides & other subscribers to figure out how to best do this
+    //How does Unity actually DO this? Like...what object do I apply this script to?
+    //Reference Odometry & LaserScan guides
+    //How does this all fit with rosconnector and subscriptions and such?
+// RGBpoint3 form?
+// Debug.Log() publishing place?
+//Can any of the other assets I've imported be used here?
 
-//Adapted From https://answers.ros.org/question/339483/ros-sharp-unity3d-import-pointcloud2/
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using System;
-using RosSharp.RosBridgeClient;
-using std_msgs = RosSharp.RosBridgeClient.MessageTypes.Std;
-using sensor_msgs = RosSharp.RosBridgeClient.MessageTypes.Sensor;
-//using RosSharp.RosBridgeClient.Protocols;
 
-
-using System.IO;
-
-using Object = UnityEngine.Object;
-
-[RequireComponent(typeof (RosConnector))]
-[RequireComponent(typeof (MeshFilter))]
-public class PointCloudSubscriber : MonoBehaviour
+namespace RosSharp.RosBridgeClient
 {
-
-    public string uri = "ws://10.42.0.1:9090";
-    private RosSocket rosSocket;
-    string subscriptionId = "";
-
-    public RgbPoint3[] Points;
-
-    //Mesh components
-    private Mesh mesh;
-    Vector3[] vertices;
-    int[] triangles;
-
-    public int xSize = 20;
-    public int zSize = 20;
-
-    //Vector3[] newverts;
-
-    private bool update_mesh = false;
-
-
-    // Start is called before the first frame update
-    void Start()
+    [RequireComponent(typeof(RosConnector))]
+    public class PointcloudSubscriber : UnitySubscriber<MessageTypes.Sensor.PointCloud2>
     {
+        //Mesh variables
+        public RgbPoint3[] Points;
+        private Mesh mesh;
+        Vector3[] vertices;
 
-        mesh = new Mesh(); 
-        GetComponent<MeshFilter>().mesh = mesh;
+        //Subscription variable
+        private bool isMessageReceived;
 
-        //CreateShape();
-        //UpdateMesh();
-
-        //mesh.vertices = newVertices;
-        //mesh.uv = newUV;
-        //mesh.triangles = newTriangles;
-
-
-            Debug.Log("RosSocket Initialization!!!");
-        //RosSocket rosSocket = new RosSocket("ws://147.229.14.150:9090");
-        rosSocket = new RosSocket(new  RosSharp.RosBridgeClient.Protocols.WebSocketNetProtocol(uri)); // 10.189.42.225:9090
-        //Subscribe("/cloud");
-        //Subscribe("/zed/rtabmap/cloud_map");
-        Subscribe("/octomap_point_cloud_centers");
-
-
-    }
-
-
-
-    void Update()
-    {
-
-
-        ////string publication_id = rosSocket.Advertise<std_msgs.String>("/talker");
-
-        ////std_msgs.String message = new std_msgs.String
-        ////{
-        ////    data = "hello"
-        ////};
-        //RosSocket.Publish(publication_id, message);
-        //RosSocket.Unadvertise(publication_id);
-        //Thread.Sleep(100);
-        //Assert.IsTrue(true);
-
-
-
-        ////rosSocket.Publish(publication_id, message);
-
-        //Subscribe("/zed/rtabmap/cloud_map");
-
-        if(update_mesh) {
-            update_mesh = false;
-
-            //CreateShape();
-            UpdateMesh();
+        protected override void Start()
+        {   
+            Debug.Log("Start\n");
+            //Start Unity Subscriber
+            base.Start();
+            //Create empty new mesh for points
+            mesh = new Mesh();
+            GetComponent<MeshFilter>().mesh = mesh;
         }
 
-    }
-
-
-
-    void CreateShape(){
-        Debug.Log("received one");
-        vertices = new Vector3[(xSize+1)*(zSize+1)];
-
-        for(int i = 0,  z =0; z <= zSize; z++)
+        private void Update() //Function to update when new messages are received
         {
-            for(int x =0; x <= xSize; x++){
-                vertices[i] = new Vector3(x,0,z);
-                i++;
+            Debug.Log("Update\n");
+            if(isMessageReceived){
+                ProcessMessage();
             }
         }
-        Debug.Log("received two");
-    }
-
-    void UpdateMesh()
-    {
-        Debug.Log("received three");
-
-        try {
-            mesh.Clear();
-        } catch (Exception e) {
-            Debug.Log(e);
-        }
-        Debug.Log("received four");
-
-        mesh.vertices = vertices;
-
-
-    }
-
-    public void OnDrawGizmos()
-    {s
-        Gizmos.color = new Color(1, 0.2F, 0, 0.5F);
-        if(vertices == null)
-            return;
-        for(int i =0; i < vertices.Length; i++)
+        
+        protected override void ReceiveMessage(MessageTypes.Sensor.PointCloud2 message) //Automatically called when new mesage received
         {
-            //Gizmos.DrawSphere(vertices[i], .1f);
-            Gizmos.DrawCube(vertices[i], new Vector3(0.1f, 0.1f, 0.1f));
+            Debug.Log("ReceiveMessage\n");
+            //Processes message, transforms into form Unity can understand
+            //NOTE: Pointcloud.cs methods could be implemented here
+            long I = message.data.Length / message.point_step;
+            RgbPoint3[] Points = new RgbPoint3[I];
+            byte[] byteSlice = new byte[message.point_step];
+            for (long i = 0; i < I; i++)
+            {
+                Array.Copy(message.data, i * message.point_step, byteSlice, 0, message.point_step);
+                Points[i] = new RgbPoint3(byteSlice, message.fields);
+            }
+            vertices = new Vector3[I];
+
+            for (var i = 0; i < I; i++)
+            {
+                vertices[i].x = Points[i].x;
+                vertices[i].y = Points[i].z;
+                vertices[i].z = Points[i].y;
+            }
+            isMessageReceived = true;
         }
-
-    }   
-
-    /*public void OnDrawGizmos()
-    {
-        if(vertices == null)
-            return;
-        for(int i =0; i < vertices.Length; i++)
+    
+        private void ProcessMessage() //Clears mesh and loads new vertices
         {
-            Gizmos.DrawSphere(vertices[i], .1f);
-            //Gizmos.DrawWireCube(vertices[i], .1f);
+            Debug.Log("ProcessMessage\n");
+            try {
+                mesh.Clear();
+            } catch (Exception e) {
+                Debug.Log(e);
+            }
+            mesh.vertices = vertices;
+            isMessageReceived = false; //Resets and waits for new message
         }
-    }*/
-
-    public void Subscribe(string id)
-    {
-        //subscriptionId  = rosSocket.Subscribe<std_msgs.String>(id, SubscriptionHandler);
-                subscriptionId  = rosSocket.Subscribe<sensor_msgs.PointCloud2>(id, SubscriptionHandler);
-        //StartCoroutine(WaitForKey());    
-
-        // Subscription:
-        //subscription_id = rosSocket.Subscribe<std_msgs.String>("/subscription_test", SubscriptionHandler);
-        //subscription_id = rosSocket.Subscribe<std_msgs.String>("/subscription_test", SubscriptionHandler);
-
-    }
-
-    private IEnumerator WaitForKey()
-    {
-        Debug.Log("Press any key to close...");
-
-        while (!Input.anyKeyDown)
-        {
-            yield return null;
-        }
-
-        Debug.Log("Closed");
-        // rosSocket.Close();
-    }
-
-    public void SubscriptionHandler(sensor_msgs.PointCloud2 message)
-    {
-
-        Debug.Log("Message received!");
-        long I = message.data.Length / message.point_step;
-        Debug.Log("Long I   " + I);
-        RgbPoint3[] Points = new RgbPoint3[I];
-        byte[] byteSlice = new byte[message.point_step];
-
-        for (long i = 0; i < I; i++)
-        {
-            Array.Copy(message.data, i * message.point_step, byteSlice, 0, message.point_step);
-            Points[i] = new RgbPoint3(byteSlice, message.fields);
-
-            //Debug.Log("X   " + Points[i].x);
-            //Debug.Log("Y   " + Points[i].y);
-            //Debug.Log("Z   " + Points[i].z);
-
-
-        }
-
-
-        //Vector3[] newverts = new Vector3[I];
-        vertices = new Vector3[I];
-        //Debug.Log("newvertes_X   " + newverts[0].x ...
     }
 }
