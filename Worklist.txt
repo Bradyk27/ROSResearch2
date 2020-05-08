@@ -7,6 +7,8 @@ To Dos:
 - Work on pointcloud rendering
 - Clean up structure & library
 - Get some sample pics of other potentially useful topics
+- Apply subscriber to some sort of mesh
+- Possible generation from depth & image streams. Adapt pointcloud.cs
 
 Future Directions:
 - Integrate into LEAP

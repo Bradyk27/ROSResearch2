@@ -12,11 +12,14 @@
 // Publish correclty orientated mesh
     //Review some guides & other subscribers to figure out how to best do this
     //How does Unity actually DO this? Like...what object do I apply this script to?
+    //Fine tune mesh renderer, need to replicate something close to a pointcloud
     //Reference Odometry & LaserScan guides
     //How does this all fit with rosconnector and subscriptions and such?
-// RGBpoint3 form?
-// Debug.Log() publishing place?
 //Can any of the other assets I've imported be used here?
+//SamplePointCloud not updating
+//PointcloudSubscriber seems unable to load new messages either...interesting...
+    //Need correct mesh? Why is it defaulting to planes?
+    //Try different streams?
 
 using UnityEngine;
 using System;
@@ -32,7 +35,7 @@ namespace RosSharp.RosBridgeClient
         Vector3[] vertices;
 
         //Subscription variable
-        private bool isMessageReceived;
+        private bool isMessageReceived = false;
 
         protected override void Start()
         {   
@@ -46,7 +49,6 @@ namespace RosSharp.RosBridgeClient
 
         private void Update() //Function to update when new messages are received
         {
-            Debug.Log("Update\n");
             if(isMessageReceived){
                 ProcessMessage();
             }
@@ -66,6 +68,7 @@ namespace RosSharp.RosBridgeClient
                 Points[i] = new RgbPoint3(byteSlice, message.fields);
             }
             vertices = new Vector3[I];
+            Debug.Log(vertices);
 
             for (var i = 0; i < I; i++)
             {

@@ -6,6 +6,8 @@ To Dos:
 - Orient pointcloud properly in Unity
 - Work on pointcloud rendering
 - Clean up structure & library
+- Get some sample pics of other potentially useful topics
+- Apply subscriber to some sort of mesh
 
 Future Directions:
 - Integrate into LEAP
@@ -16,4 +18,4 @@ Useful Things to Remember:
 - Image & Time Reference messages have been deleted from the "common_msgs" folder as they were recreate and / or had programming errors.
 - Had to completely delete common_msgs & rtabmap folders to get Rviz to work (topics had same name is my guess)
 - Voxel cloud is very useful for rendering pointclouds
-- The nonauto-generated pointcloud.cs seems to be generated via depth & rgb images
+- The nonauto-generated pointcloud.cs seems to be generated via depth & rgb images. Not sure if this is a message file or...Gonna move it back to where it was for the time being. I do not believe it is.

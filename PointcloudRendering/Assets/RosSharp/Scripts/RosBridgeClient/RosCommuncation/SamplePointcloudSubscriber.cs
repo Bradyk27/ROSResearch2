@@ -13,10 +13,9 @@ using sensor_msgs = RosSharp.RosBridgeClient.MessageTypes.Sensor;
 using System.IO;
 
 using Object = UnityEngine.Object;
-
 [RequireComponent(typeof (RosConnector))]
 [RequireComponent(typeof (MeshFilter))]
-public class PointCloudSubscriber : MonoBehaviour
+public class SamplePointcloudSubscriber : MonoBehaviour
 {
 
     public string uri = "ws://10.42.0.1:9090";
@@ -58,12 +57,8 @@ public class PointCloudSubscriber : MonoBehaviour
         rosSocket = new RosSocket(new  RosSharp.RosBridgeClient.Protocols.WebSocketNetProtocol(uri)); // 10.189.42.225:9090
         //Subscribe("/cloud");
         //Subscribe("/zed/rtabmap/cloud_map");
-        Subscribe("/octomap_point_cloud_centers");
-
-
+        Subscribe("/camera/infra1/image_rect_raw/compressed");
     }
-
-
 
     void Update()
     {
