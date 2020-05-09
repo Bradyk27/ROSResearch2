@@ -10,17 +10,13 @@
 //Adapted from https://answers.ros.org/question/339483/ros-sharp-unity3d-import-pointcloud2/ & https://github.com/siemens/ros-sharp/blob/master/Libraries/RosBridgeClient/PointCloud.cs
 // To Dos:
 // Publish correctly orientated mesh
-    //Need triangles?
-    //Material & shader on Mesh renderer?
     //Orient correctly, color, size, etc.
-    //Mesh topology & setindices to render as points instead of triangles? Possible not working with operating system.
-        //Look at pointcloud importer & look for ideas. You're getting the collection of points...just need to render them
-        //Might have to add indices list which basically copies vertices in new form. What about color though...
-//Can any of the other assets I've imported be used here?
-//SamplePointCloud? May or may not be updating?
+        //Get in form recognized by custom vertex shader. That can do color. Look at their code
+//Voxel cloud CAN be loaded AND generates triangles, but is much slower. For some reason only publishes when Rviz is up (fixing this would def save some processing power). Also, might have to comment out the topology change
 
 using UnityEngine;
 using System;
+using UnityEditor;
 
 namespace RosSharp.RosBridgeClient
 {
@@ -59,7 +55,7 @@ namespace RosSharp.RosBridgeClient
         {
             Debug.Log("ReceiveMessage\n");
             //Processes message, transforms into form Unity can understand
-            //NOTE: Pointcloud.cs methods could be implemented here
+            //NOTE: Pointcloud.cs methods could be implemented here (depth & image)
             long I = message.data.Length / message.point_step;
             RgbPoint3[] Points = new RgbPoint3[I];
             byte[] byteSlice = new byte[message.point_step];
@@ -70,7 +66,6 @@ namespace RosSharp.RosBridgeClient
             }
             vertices = new Vector3[I];
             
-            //Debug.Log("Vertices:\n");
             for (var i = 0; i < I; i++)
             {
                 vertices[i].x = Points[i].x;
@@ -94,12 +89,11 @@ namespace RosSharp.RosBridgeClient
                 indices[i] = i;
             }
             
-            Debug.Log("Mesh Vertices Length: " + mesh.vertices.Length);
-            Debug.Log("Mesh Indices Length: " + indices.Length);
-            //mesh.triangles = triangles;
-            //Debug.Log("Mesh Triangles Length: " + mesh.triangles.Length);
+            //Graphs mesh as points. Need to consider color. Works with /rtabmap/cloud_map & voxel_cloud
             mesh.SetIndices(indices, MeshTopology.Points, 0);
             mesh.RecalculateBounds();
+            AssetDatabase.CreateAsset(mesh, "Assets/testMesh.asset");
+            AssetDatabase.SaveAssets();
             isMessageReceived = false; //Resets and waits for new message
         }
     }

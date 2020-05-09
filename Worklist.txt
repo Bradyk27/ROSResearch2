@@ -1,14 +1,10 @@
 To Dos:
-- Okay I've broken the images now...lol
 - Create ROS# subscriber for pointclouds
-  - PointCloud.cs appears to be a message file for Pointclouds
-  - Need to get a subscriber
+  - Need to get color for each vertex. Shouldn't be too terribly hard 
   - Counter idea: could pull in depth values with image and offset manually
 - Orient pointcloud properly in Unity
-- Work on pointcloud rendering
 - Clean up structure & library
 - Get some sample pics of other potentially useful topics
-- Apply subscriber to some sort of mesh
 - Possible generation from depth & image streams. Adapt pointcloud.cs
 
 Future Directions:
