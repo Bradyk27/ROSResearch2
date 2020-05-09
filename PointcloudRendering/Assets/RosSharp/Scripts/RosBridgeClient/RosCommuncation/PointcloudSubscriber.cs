@@ -9,9 +9,13 @@
 
 //Adapted from https://answers.ros.org/question/339483/ros-sharp-unity3d-import-pointcloud2/ & https://github.com/siemens/ros-sharp/blob/master/Libraries/RosBridgeClient/PointCloud.cs
 // To Dos:
-//Voxel cloud messages not processing (or crashing system), rtabmap messages are being received though.
-    //The question is how to render them and what form are they in? Are we getting the full message?
 // Publish correctly orientated mesh
+    //Need triangles?
+    //Material & shader on Mesh renderer?
+    //Orient correctly, color, size, etc.
+    //Mesh topology & setindices to render as points instead of triangles? Possible not working with operating system.
+        //Look at pointcloud importer & look for ideas. You're getting the collection of points...just need to render them
+        //Might have to add indices list which basically copies vertices in new form. What about color though...
 //Can any of the other assets I've imported be used here?
 //SamplePointCloud? May or may not be updating?
 
@@ -26,7 +30,9 @@ namespace RosSharp.RosBridgeClient
         //Mesh variables
         public RgbPoint3[] Points;
         private Mesh mesh;
+        public MeshRenderer meshRenderer;
         Vector3[] vertices;
+        int[] triangles;
 
         //Subscription variable
         private bool isMessageReceived = false;
@@ -39,6 +45,7 @@ namespace RosSharp.RosBridgeClient
             //Create empty new mesh for points
             mesh = new Mesh();
             GetComponent<MeshFilter>().mesh = mesh;
+            //meshRenderer.material = new Material(Shader.Find("Custom/VertexColor"));
         }
 
         private void Update() //Function to update when new messages are received
@@ -62,26 +69,37 @@ namespace RosSharp.RosBridgeClient
                 Points[i] = new RgbPoint3(byteSlice, message.fields);
             }
             vertices = new Vector3[I];
-
+            
+            //Debug.Log("Vertices:\n");
             for (var i = 0; i < I; i++)
             {
                 vertices[i].x = Points[i].x;
                 vertices[i].y = Points[i].z;
                 vertices[i].z = Points[i].y;
             }
-            Debug.Log("Vertices: " + vertices); //Need to make sure these are actual legitmate vertices. Then we can figure out how to render them
             isMessageReceived = true;
         }
     
         private void ProcessMessage() //Clears mesh and loads new vertices
         {
             Debug.Log("ProcessMessage\n");
+            int[] indices = new int[vertices.Length];
             try {
                 mesh.Clear();
             } catch (Exception e) {
                 Debug.Log(e);
             }
             mesh.vertices = vertices;
+            for(int i = 0; i < mesh.vertices.Length; i++){
+                indices[i] = i;
+            }
+            
+            Debug.Log("Mesh Vertices Length: " + mesh.vertices.Length);
+            Debug.Log("Mesh Indices Length: " + indices.Length);
+            //mesh.triangles = triangles;
+            //Debug.Log("Mesh Triangles Length: " + mesh.triangles.Length);
+            mesh.SetIndices(indices, MeshTopology.Points, 0);
+            mesh.RecalculateBounds();
             isMessageReceived = false; //Resets and waits for new message
         }
     }
