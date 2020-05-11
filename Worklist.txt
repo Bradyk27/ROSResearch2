@@ -1,5 +1,6 @@
 To Dos:
 - Create ROS# subscriber for pointclouds
+  - Make ROS create the voxel cloud without having to run Rviz
   - Need to get color for each vertex. Shouldn't be too terribly hard 
   - Counter idea: could pull in depth values with image and offset manually
 - Orient pointcloud properly in Unity
