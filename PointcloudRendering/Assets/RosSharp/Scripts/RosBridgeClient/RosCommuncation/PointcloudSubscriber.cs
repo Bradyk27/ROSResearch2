@@ -9,9 +9,8 @@
 
 //Adapted from https://answers.ros.org/question/339483/ros-sharp-unity3d-import-pointcloud2/ & https://github.com/siemens/ros-sharp/blob/master/Libraries/RosBridgeClient/PointCloud.cs
 // To Dos:
-// Flip y & z axis, orient camera right.
-//Fix color lol
-//Voxel cloud CAN be loaded AND generates triangles, but is much slower. For some reason only publishes when Rviz is up (fixing this would def save some processing power)
+//Investigate faster publishing methods (depth + image) or  different pointcloud topic
+//No idea why but cloudmap is like displaced more than voxelcloud? lol
 
 using UnityEngine;
 using System;
@@ -64,16 +63,18 @@ namespace RosSharp.RosBridgeClient
                 Points[i] = new RgbPoint3(byteSlice, message.fields);
             }
             vertices = new Vector3[I];
-            colors = new Color[I]; //Ignoring alpha values here
+            colors = new Color[I];
             for (var i = 0; i < I; i++)
             {
                 vertices[i].x = Points[i].x;
                 vertices[i].y = Points[i].z;
                 vertices[i].z = Points[i].y;
-                //Deleted random try & catch loop that just continued
-                colors[i].r = (float)((double)Points[i].rgb[0] / ((double)Points[i].rgb[0] + (double)Points[i].rgb[1] + (double)Points[i].rgb[2]));
-                colors[i].g = (float)((double)Points[i].rgb[1] / ((double)Points[i].rgb[0] + (double)Points[i].rgb[1] + (double)Points[i].rgb[2]));
-                colors[i].b = (float)((double)Points[i].rgb[2] / ((double)Points[i].rgb[0] + (double)Points[i].rgb[1] + (double)Points[i].rgb[2]));
+                colors[i].r = (float)((float)Points[i].rgb[0] / 255.0);
+                colors[i].g = (float)((float)Points[i].rgb[1] / 255.0);
+                colors[i].b = (float)((float)Points[i].rgb[2] / 255.0);
+                colors[i].a = 1.0F; 
+                //Debug.Log("Colors: " + colors[i].ToString());
+                //Debug.Log("Vertex Colors: " + Points[i].rgb[0] + " " + Points[i].rgb[1] + " " + Points[i].rgb[2] + "\n");
             }
             isMessageReceived = true;
         }
@@ -81,24 +82,19 @@ namespace RosSharp.RosBridgeClient
         private void ProcessMessage() //Clears mesh and loads new vertices
         {
             Debug.Log("ProcessMessage\n");
-            int[] indices = new int[vertices.Length]; //Could probably do this earlier but need to declare at beginning. Also could work with rgbpoint3
 
-            try { //Not entirely sure this needed
-                mesh.Clear();
-            } catch (Exception e) {
-                Debug.Log(e);
-            }
+            mesh.Clear(); //Removed try / catch loop
             mesh.vertices = vertices;
             mesh.colors = colors;
-            //Surely a better way to do this
+
+            //Graphs mesh as points. Works with /rtabmap/cloud_map & /voxel_cloud
+            int[] indices = new int[vertices.Length];
             for(int i = 0; i < mesh.vertices.Length; i++){
                 indices[i] = i;
             }
-            
-            //Graphs mesh as points. Works with /rtabmap/cloud_map & voxel_cloud
             mesh.SetIndices(indices, MeshTopology.Points, 0);
             mesh.RecalculateBounds();
-            //AssetDatabase.CreateAsset(mesh, "Assets/testMeshColorVoxelMap.asset");
+            //AssetDatabase.CreateAsset(mesh, "Assets/testMeshColorRTABMap4.asset");
             //AssetDatabase.SaveAssets();
             isMessageReceived = false; //Resets and waits for new message
         }
