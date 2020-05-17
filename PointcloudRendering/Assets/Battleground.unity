@@ -1679,7 +1679,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 709355668}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef6e2677fa36b0c46a9f6d8bd354c686, type: 3}
   m_Name: 
@@ -2690,6 +2690,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1370858618}
   - component: {fileID: 1370858617}
+  - component: {fileID: 1370858620}
+  - component: {fileID: 1370858623}
+  - component: {fileID: 1370858622}
+  - component: {fileID: 1370858621}
   - component: {fileID: 1370858619}
   m_Layer: 0
   m_Name: Color & Depth Images
@@ -2737,12 +2741,91 @@ MonoBehaviour:
   m_GameObject: {fileID: 1370858616}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf3612ed472448108be58a63c12ff5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Topic: /camera/depth/image_rect_raw
+  TimeStep: 0
+  meshRenderer: {fileID: 1886545639}
+  pointcloudReady: 0
+  generationReady: 0
+--- !u!33 &1370858620
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370858616}
+  m_Mesh: {fileID: 0}
+--- !u!114 &1370858621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370858616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf3612ed472448108be58a63c12ff5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Topic: /camera/color/image_raw
+  TimeStep: 0
+  meshRenderer: {fileID: 1333059982}
+  pointcloudReady: 0
+  generationReady: 0
+--- !u!114 &1370858622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370858616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3aa770a8039f84e598619ac6c2cf71b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Topic: /camera/color/image_raw/compressed
-  TimeStep: 0
-  meshRenderer: {fileID: 1886545639}
+  meshRenderer: {fileID: 1370858623}
+  colorImageSubscriber: {fileID: 1370858621}
+  depthImageSubscriber: {fileID: 1370858619}
+--- !u!23 &1370858623
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370858616}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
 --- !u!1 &1403175785
 GameObject:
   m_ObjectHideFlags: 0
