@@ -18,17 +18,15 @@ namespace RosSharp.RosBridgeClient
     {
         public Image image;
         private bool isMessageReceived;
-
-        public MeshRenderer meshRenderer;
-        private Texture2D texture2D;
-        private byte[] imageData;
-
+        //public MeshRenderer meshRenderer;
+        //private Texture2D texture2D;
+        //private byte[] imageData;
         public bool pointcloudReady;
         public bool generationReady;
 
         protected override void Start()
         {
-			//Debug.Log("Start\n");
+			Debug.Log("Start\n");
 			base.Start();
             generationReady = true;
 
@@ -44,7 +42,7 @@ namespace RosSharp.RosBridgeClient
 
         protected override void ReceiveMessage(MessageTypes.Sensor.Image Image)
         {   
-            Debug.Log("ReceiveMessage\n");
+            //Debug.Log("ReceiveMessage\n");
             image = Image;
             isMessageReceived = true;
 
@@ -53,7 +51,7 @@ namespace RosSharp.RosBridgeClient
 
         private void ProcessMessage()
         {
-            Debug.Log("ProcessMessage\n");
+            //Debug.Log("ProcessMessage\n");
             isMessageReceived = false;
             pointcloudReady = true;
 
